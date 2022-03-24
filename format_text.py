@@ -1,9 +1,11 @@
+from sys import argv
 
+source_text = str(argv[1])
 
 # data = open("./rep_speech.txt").read()
-cleanedData = open("./soft_power_cleaned.txt", 'w')
+cleanedData = open("./cleaned_source_text/"+source_text[:-4]+"_cleaned.txt", 'w')
 
-with open('./soft_power.txt','r+') as file:
+with open("./source_text/"+source_text,'r+') as file:
     # write only the nonempty lines
     for line in file:
         if not line.isspace():

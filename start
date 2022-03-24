@@ -1,0 +1,11 @@
+echo "Selected parameters:"
+echo "         input text: $1"
+
+python3 format_text.py $1
+
+echo "A copy of the cleaned text used for the learner can be found under"
+echo "\"./cleaned_source_text/${1%.*}_cleaned.txt\""
+
+echo "------------- Learning in Progress: --------------"
+
+python3 text_generation.py "${1%.*}_cleaned.txt"

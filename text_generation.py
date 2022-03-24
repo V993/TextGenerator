@@ -12,12 +12,18 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras import regularizers
 import tensorflow.keras.utils as ku 
+from tensorflow.keras.callbacks import EarlyStopping
+
 import numpy as np
 import matplotlib.pyplot as plt
 
+from sys import argv
+
+source_text = argv[1]
+
 # text cleaning
 tokenizer = Tokenizer()
-data = open("./soft_power_cleaned.txt").read()
+data = open("./cleaned_source_text/"+source_text).read()
 corpus = data.lower().split("\n")
 
 # tokenize words
@@ -93,7 +99,16 @@ model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accur
 # output model
 # print(model.summary())
 
-results = model.fit(predictors, label, epochs=200, verbose=1)
+#implement early stopping
+early_stop = EarlyStopping( monitor='val_loss', mode='min', 
+                            verbose=1, patience=10, 
+                            min_delta=10, restore_best_weights=True)
+
+results = model.fit(predictors, 
+                    label, 
+                    epochs=200, 
+                    callbacks = [early_stop],
+                    verbose=1)
 
 acc = results.history['accuracy']
 loss = results.history['loss']
