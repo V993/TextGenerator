@@ -123,7 +123,7 @@ plt.title("Training Loss")
 plt.legend()
 # plt.show()
 
-seed_text = "Individual Americans have a right to own firearms."
+seed_text = argv[2]
 next_words = 100
 
 for _ in range(next_words):
