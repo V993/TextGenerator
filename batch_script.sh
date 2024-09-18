@@ -12,7 +12,7 @@ module load conda
 cd $SLURM_SUBMIT_DIR
 source activate testing
 
-./start dark_knight.txt "the figure emerges"
-echo "./start dark_knight.txt “the figure emerges"
+./start dark_knight.txt "batman"
+echo "./start dark_knight.txt “batman"
 
 exit
