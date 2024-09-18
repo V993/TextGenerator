@@ -140,8 +140,6 @@ for _ in range(next_words):
 
     output_word = "sike"
 
-    print(output_word,most_probable)
-
     for word, index in tokenizer.word_index.items():
 
         if index == most_probable: 
@@ -150,4 +148,5 @@ for _ in range(next_words):
 
     seed_text += " " + output_word
 
+print("Generated text:")
 print(seed_text)
