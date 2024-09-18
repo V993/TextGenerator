@@ -16,10 +16,19 @@ import os
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 print(f'Using device: {device}')
 
-# Read command-line arguments
-source_text = sys.argv[1]
-seed_text = sys.argv[2]
-epochs = sys.argv[3]
+# Check if the command line arguments are provided and assign them, otherwise use default values
+source_text = sys.argv[1] if len(sys.argv) > 1 else "dark_knight.txt"
+seed_text = sys.argv[2] if len(sys.argv) > 2 else "batman flings"
+
+try:
+    epochs = int(sys.argv[3]) if len(sys.argv) > 3 else 100
+except:
+    epochs = 100
+
+# Now you can use source_text, seed_text, and epochs in your script
+print(f"Source Text: {source_text}")
+print(f"Seed Text: {seed_text}")
+print(f"Epochs: {epochs}")
 
 # Read and preprocess data
 data_path = os.path.join("./cleaned_source_text/", source_text)

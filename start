@@ -9,4 +9,4 @@ echo "\"./cleaned_source_text/${1%.*}_cleaned.txt\""
 
 echo "------------- Learning in Progress: --------------"
 
-python3 text_generation.py "${1%.*}_cleaned.txt" $2
+python3 text_generation.py "${1%.*}_cleaned.txt" $2 $3
