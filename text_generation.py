@@ -19,6 +19,7 @@ print(f'Using device: {device}')
 # Read command-line arguments
 source_text = sys.argv[1]
 seed_text = sys.argv[2]
+epochs = sys.argv[3]
 
 # Read and preprocess data
 data_path = os.path.join("./cleaned_source_text/", source_text)
@@ -125,7 +126,7 @@ criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 
 # Training loop
-num_epochs = 100
+num_epochs = epochs
 train_losses = []
 train_accuracies = []
 
